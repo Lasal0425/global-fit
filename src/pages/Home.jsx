@@ -1,19 +1,11 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import Navbar from './Navbar';
 
 function Home() {
   return (
     <div className="font-sans bg-white text-black min-h-screen">
-      {/* Navigation */}
-      <header className="flex justify-between items-center py-6 px-10 border-b">
-        <h1 className="text-2xl font-bold text-[#101828]">AIESEC Match</h1>
-        <nav className="hidden md:flex gap-8 text-sm font-medium">
-          <a href="/" className="hover:text-orange-600">Home</a>
-          <a href="/about" className="hover:text-orange-600">About</a>
-          <a href="/projects" className="hover:text-orange-600">Find Projects</a>
-          <a href="/contact" className="hover:text-orange-600">Contact</a>
-        </nav>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-10 py-20 gap-10">
