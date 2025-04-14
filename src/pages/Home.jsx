@@ -3,9 +3,9 @@ import { ChevronRight } from 'lucide-react';
 
 function Home() {
   return (
-    <div className="font-sans bg-white text-black min-h-screen">
+    <div className="font-sans bg-white text-black min-h-screen w-full">
       {/* Hero Section */}
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-10 py-20 gap-10">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-4 md:px-10 py-20 gap-10 w-full max-w-full">
         <div className="max-w-xl">
           <p className="text-orange-600 font-semibold mb-2">❤️ Welcome to AIESEC Match</p>
           <h1 className="text-4xl lg:text-6xl font-extrabold mb-6">
@@ -28,16 +28,17 @@ function Home() {
           <p className="text-red-500 mt-6">Error fetching data: Failed to fetch</p>
         </div>
         <div className="w-full lg:w-[500px]">
-          <img src="/api/placeholder/800/600" 
+          {/* Use a local image from your public folder */}
+          <img src="/volunteers.jpg" 
                alt="Volunteers in action"
-               className="rounded-2xl shadow-lg object-cover" />
+               className="rounded-2xl shadow-lg object-cover w-full h-auto" />
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="px-10 py-20 bg-gray-50">
+      <section className="px-4 md:px-10 py-20 bg-gray-50 w-full max-w-full">
         <h2 className="text-3xl font-bold mb-12 text-center">Why Choose Us?</h2>
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div>
             <div className="text-2xl mb-2">♥</div>
             <h3 className="text-xl font-semibold mb-2">Make an Impact</h3>

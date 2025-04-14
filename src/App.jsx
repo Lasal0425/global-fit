@@ -5,12 +5,12 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from './pages/Contact';
 import Navbar from './pages/Navbar';
-import Footer from './pages/Footer'; // Import the new Footer component
+import Footer from './pages/Footer';
 
 function App() {
   return (
     <Router>
-      <div className="font-sans">
+      <div className="font-sans w-full">
         {/* Using the imported Navbar component */}
         <Navbar />
 
@@ -30,7 +30,14 @@ function App() {
           body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          }
+          #root {
+            width: 100%;
+            max-width: 100%;
           }
         `}</style>
       </div>
