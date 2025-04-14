@@ -6,8 +6,8 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-600 text-white w-full">
-      <div className="w-full flex items-center justify-between px-4 py-4">
+    <nav className="bg-blue-600 text-white w-full min-w-full left-0 right-0">
+      <div className="flex items-center justify-between px-4 py-4 w-full">
         <Link to="/" className="text-xl font-bold">AIESEC Match</Link>
         
         {/* Mobile menu button */}

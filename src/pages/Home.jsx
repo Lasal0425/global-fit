@@ -3,9 +3,9 @@ import { ChevronRight } from 'lucide-react';
 
 function Home() {
   return (
-    <div className="font-sans bg-white text-black min-h-screen w-full">
+    <div className="font-sans bg-white text-black min-h-screen w-full min-w-full left-0 right-0">
       {/* Hero Section */}
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-4 md:px-10 py-20 gap-10 w-full max-w-full">
+      <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-4 md:px-10 py-20 gap-10 w-full min-w-full">
         <div className="max-w-xl">
           <p className="text-orange-600 font-semibold mb-2">❤️ Welcome to AIESEC Match</p>
           <h1 className="text-4xl lg:text-6xl font-extrabold mb-6">
@@ -36,7 +36,7 @@ function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="px-4 md:px-10 py-20 bg-gray-50 w-full max-w-full">
+      <section className="px-4 md:px-10 py-20 bg-gray-50 w-full min-w-full left-0 right-0">
         <h2 className="text-3xl font-bold mb-12 text-center">Why Choose Us?</h2>
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div>
