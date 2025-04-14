@@ -1,40 +1,59 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-export default function Navbar() {
+function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white border-b">
-      <div className="flex justify-between items-center py-6 px-10 max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-900">AIESEC Match</h1>
+    <nav className="bg-blue-600 text-white p-4 shadow-md">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center">
+        <div className="font-bold text-xl mb-2 sm:mb-0">AIESEC Match</div>
         
         {/* Mobile menu button */}
         <button 
-          className="md:hidden"
+          className="sm:hidden absolute right-4 top-4"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium">
-          <a href="/" className="hover:text-orange-600 transition-colors">Home</a>
-          <a href="/about" className="hover:text-orange-600 transition-colors">About</a>
-          <a href="/projects" className="hover:text-orange-600 transition-colors">Find Projects</a>
-          <a href="/contact" className="hover:text-orange-600 transition-colors">Contact</a>
-        </nav>
+        <ul className="hidden sm:flex space-x-6">
+          <li>
+            <Link to="/" className="hover:text-blue-200 transition-colors">Home</Link>
+          </li>
+          <li>
+            <Link to="/about" className="hover:text-blue-200 transition-colors">About</Link>
+          </li>
+          <li>
+            <Link to="/projects" className="hover:text-blue-200 transition-colors">Find Projects</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-blue-200 transition-colors">Contact</Link>
+          </li>
+        </ul>
+        
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <ul className="sm:hidden flex flex-col space-y-4 w-full mt-4">
+            <li>
+              <Link to="/" className="hover:text-blue-200 transition-colors block">Home</Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-blue-200 transition-colors block">About</Link>
+            </li>
+            <li>
+              <Link to="/projects" className="hover:text-blue-200 transition-colors block">Find Projects</Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-blue-200 transition-colors block">Contact</Link>
+            </li>
+          </ul>
+        )}
       </div>
-      
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav className="md:hidden py-4 px-10 border-t flex flex-col gap-4 text-sm font-medium">
-          <a href="/" className="hover:text-orange-600 py-2 transition-colors">Home</a>
-          <a href="/about" className="hover:text-orange-600 py-2 transition-colors">About</a>
-          <a href="/projects" className="hover:text-orange-600 py-2 transition-colors">Find Projects</a>
-          <a href="/contact" className="hover:text-orange-600 py-2 transition-colors">Contact</a>
-        </nav>
-      )}
-    </header>
+    </nav>
   );
 }
+
+export default Navbar;

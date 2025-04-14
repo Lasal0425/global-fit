@@ -1,12 +1,9 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
-import Navbar from './Navbar';
 
 function Home() {
   return (
     <div className="font-sans bg-white text-black min-h-screen">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-10 py-20 gap-10">
         <div className="max-w-xl">
@@ -31,7 +28,7 @@ function Home() {
           <p className="text-red-500 mt-6">Error fetching data: Failed to fetch</p>
         </div>
         <div className="w-full lg:w-[500px]">
-          <img src="https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?auto=format&fit=crop&w=800&q=80"
+          <img src="/api/placeholder/800/600" 
                alt="Volunteers in action"
                className="rounded-2xl shadow-lg object-cover" />
         </div>
