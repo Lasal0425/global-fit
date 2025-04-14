@@ -1,5 +1,8 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
+
 
 function Home() {
   return (
@@ -61,6 +64,8 @@ function Home() {
           </div>
         </div>
       </section>
+      <About/>
+      <Contact/>
     </div>
   );
 }
