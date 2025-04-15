@@ -20,7 +20,7 @@ function Contact() {
               <div className="bg-blue-50 p-4 rounded-lg mb-6">
                 <h4 className="font-bold mb-2">What our members say:</h4>
                 <p className="italic text-gray-700">
-                  "Joining AIESEC was the best decision I made in college. It completely transformed my 
+                  "Joining AIESEC was the best decision I made while im in University. It completely transformed my 
                   perspective and gave me friends from around the world."
                 </p>
                 <p className="text-right text-sm text-gray-500 mt-2">— Aditya, 3rd Year</p>
