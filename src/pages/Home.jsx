@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className="font-sans bg-white text-black min-h-screen w-full min-w-full left-0 right-0">
       {/* Hero Section */}
-      <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-4 md:px-10 py-20 gap-10 w-full min-w-full">
+      <section className="flex flex-col-reverse items-center justify-between px-4 md:px-10 py-20 gap-10 w-full min-w-full">
         <div className="max-w-xl">
           <p className="text-orange-600 font-semibold mb-2">❤️ Welcome to AIESEC Match</p>
           <h1 className="text-4xl lg:text-6xl font-extrabold mb-6">
@@ -29,12 +29,6 @@ function Home() {
             </button>
           </div>
           <p className="text-red-500 mt-6">Error fetching data: Failed to fetch</p>
-        </div>
-        <div className="w-full lg:w-[500px]">
-          {/* Use a local image from your public folder */}
-          <img src="/volunteers.jpg" 
-               alt="Volunteers in action"
-               className="rounded-2xl shadow-lg object-cover w-full h-auto" />
         </div>
       </section>
 

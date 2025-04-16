@@ -28,7 +28,7 @@ function App() {
         <Footer />
 
         {/* Global styles */}
-        <style jsx global>{`
+        {/* <style jsx global>{`
           html, body {
             margin: 0;
             padding: 0;
@@ -47,7 +47,7 @@ function App() {
           * {
             box-sizing: border-box;
           }
-        `}</style>
+        `}</style> */}
       </div>
     </Router>
   );
