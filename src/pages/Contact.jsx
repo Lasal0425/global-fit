@@ -47,7 +47,7 @@ function Contact() {
                 <p className="text-gray-700 text-sm">Learn all about our volunteering opportunities abroad.</p>
               </div>
               <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="text-sm text-blue-600 font-semibold mb-1">April 22, 2025</div>
+                <div className="text-sm text-blue-600 font-semibold mb-1">April 25, 2025</div>
                 <h4 className="font-bold mb-1">Workshop: Cross-Cultural Communication</h4>
                 <p className="text-gray-700 text-sm">Essential skills for global experiences.</p>
               </div>
