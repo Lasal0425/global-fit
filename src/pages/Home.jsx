@@ -32,7 +32,7 @@ function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="px-4 md:px-10 py-20 bg-gray-50 w-full min-w-full left-0 right-0">
+      <section className="px-4 md:px-10 py-20 bg-gray-50 w-full min-w-full left-0 right-0 min-h-screen">
         <h2 className="text-3xl font-bold mb-12 text-center">Why Choose Us?</h2>
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div>
