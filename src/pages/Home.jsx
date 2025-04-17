@@ -18,7 +18,7 @@ function Home() {
             </span>
           </h1>
           <p className="text-gray-700 text-lg mb-8">
-            Join a vibrant community of change-makers transforming lives in Colombo, Galle, Kandy, and beyond. Your journey to making a difference starts here.
+            Join a vibrant community of change-makers transforming lives in all around the country and beyond. Your journey to making a difference starts here.
           </p>
           <div className="flex flex-wrap gap-4">
             <button className="bg-gradient-to-r from-orange-500 to-pink-600 hover:opacity-90 text-white px-6 py-3 rounded-full flex items-center font-semibold">
