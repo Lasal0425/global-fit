@@ -114,17 +114,7 @@ function Contact() {
         </div>
       </div>
       
-      {/* Sticky chat button */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center"
-        >
-          <MessageCircle size={24} />
-          <span className="ml-2 hidden md:inline">Chat with us</span>
-        </motion.button>
-      </div>
+      
     </div>
   );
 }
