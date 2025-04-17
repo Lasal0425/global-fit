@@ -28,7 +28,6 @@ function Home() {
               Learn More
             </button>
           </div>
-          <p className="text-red-500 mt-6">Error fetching data: Failed to fetch</p>
         </div>
       </section>
 
