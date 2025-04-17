@@ -7,7 +7,7 @@ function About() {
   return (
     <div className="font-sans">
       <div className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto min-h-screen">
           <h2 className="text-3xl font-bold mb-8 text-blue-600">What is AIESEC?</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -50,7 +50,7 @@ function About() {
           
           <h2 className="text-3xl font-bold mb-8 text-blue-600">What is Global Volunteer?</h2>
           
-          <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-8 rounded-xl mb-12">
+          <div className="bg-gradient-to-r from-indigo-100 to-purple-100 p-8 rounded-xl mb-12 ">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-4">Live abroad, volunteer with purpose, grow as a leader</h3>
