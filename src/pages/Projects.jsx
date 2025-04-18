@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle, X, Check, ArrowRight, Share2, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Project data
+// Project data with themed placeholder images
 const projects = [
   {
     id: 1,
@@ -12,6 +12,10 @@ const projects = [
     duration: "6 weeks",
     sdg: "Quality Education",
     image: "/api/placeholder/600/400",
+    imageOverlay: {
+      icon: "📚",
+      color: "bg-blue-500"
+    },
     description: "Teach English to underprivileged children and support after-school programs.",
     tags: ["Teaching", "Community Work", "SDG 4"]
   },
@@ -22,6 +26,10 @@ const projects = [
     duration: "8 weeks",
     sdg: "Climate Action",
     image: "/api/placeholder/600/400",
+    imageOverlay: {
+      icon: "🌳",
+      color: "bg-green-500"
+    },
     description: "Join efforts to restore forest ecosystems through planting and conservation.",
     tags: ["Environment", "Nature", "SDG 13"]
   },
@@ -32,6 +40,10 @@ const projects = [
     duration: "6 weeks",
     sdg: "Decent Work",
     image: "/api/placeholder/600/400",
+    imageOverlay: {
+      icon: "💻",
+      color: "bg-purple-500"
+    },
     description: "Teach digital literacy and coding basics to youth from local communities.",
     tags: ["Technology", "Education", "SDG 8"]
   },
@@ -42,6 +54,10 @@ const projects = [
     duration: "7 weeks",
     sdg: "Good Health",
     image: "/api/placeholder/600/400",
+    imageOverlay: {
+      icon: "🩺",
+      color: "bg-red-500"
+    },
     description: "Conduct health education workshops in rural communities.",
     tags: ["Healthcare", "Community Work", "SDG 3"]
   },
@@ -52,6 +68,10 @@ const projects = [
     duration: "8 weeks",
     sdg: "Zero Hunger",
     image: "/api/placeholder/600/400",
+    imageOverlay: {
+      icon: "🌾",
+      color: "bg-yellow-500"
+    },
     description: "Work with local farmers to implement sustainable farming techniques.",
     tags: ["Agriculture", "Sustainability", "SDG 2"]
   },
@@ -62,6 +82,10 @@ const projects = [
     duration: "6 weeks",
     sdg: "Gender Equality",
     image: "/api/placeholder/600/400",
+    imageOverlay: {
+      icon: "✊",
+      color: "bg-pink-500"
+    },
     description: "Lead workshops on entrepreneurship and career development for young women.",
     tags: ["Empowerment", "Education", "SDG 5"]
   },
@@ -74,6 +98,7 @@ function Projects() {
   const [matchedProjects, setMatchedProjects] = useState([]);
   const [animate, setAnimate] = useState(false);
   const [direction, setDirection] = useState(null);
+  const [showFullCard, setShowFullCard] = useState(true);
   const constraintsRef = useRef(null);
 
   // Countdown timer
@@ -106,6 +131,7 @@ function Projects() {
   const handleSwipe = (direction) => {
     setDirection(direction);
     setAnimate(true);
+    setShowFullCard(false);
     
     const liked = direction === 'right';
     
@@ -116,6 +142,7 @@ function Projects() {
     
     setTimeout(() => {
       setAnimate(false);
+      setShowFullCard(true);
       if (currentProject < projects.length - 1) {
         setCurrentProject(currentProject + 1);
       } else {
@@ -127,13 +154,43 @@ function Projects() {
         setMatchedProjects(matches);
         setView('results');
       }
-    }, 300);
+    }, 500);
   };
 
   const resetSwipe = () => {
     setCurrentProject(0);
     setSwipedProjects([]);
     setView('swipe');
+  };
+
+  // Stack effect for upcoming cards
+  const renderStackedCards = () => {
+    const nextProjects = [];
+    for (let i = 1; i <= 2; i++) {
+      if (currentProject + i < projects.length) {
+        nextProjects.push(projects[currentProject + i]);
+      }
+    }
+
+    return nextProjects.map((project, index) => (
+      <div 
+        key={project.id}
+        className="absolute top-0 left-0 right-0" 
+        style={{
+          zIndex: -index - 1,
+          transform: `translateY(${(index + 1) * 10}px) scale(${1 - (index + 1) * 0.05})`,
+          opacity: 0.7 - index * 0.3,
+        }}
+      >
+        <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+          <div className="relative">
+            <div className={`w-full h-64 ${project.imageOverlay.color} bg-opacity-20 flex items-center justify-center`}>
+              <span className="text-6xl">{project.imageOverlay.icon}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ));
   };
 
   const renderView = () => {
@@ -157,7 +214,10 @@ function Projects() {
           <h2 className="text-2xl font-bold text-blue-600 mb-6">Find Your Perfect Match</h2>
           <p className="text-gray-600 mb-8 text-center">Swipe right on projects you like, left on those you don't</p>
           
-          <div className="relative w-full max-w-sm" ref={constraintsRef}>
+          <div className="relative w-full max-w-sm h-96" ref={constraintsRef}>
+            {/* Stacked background cards for depth effect */}
+            {showFullCard && renderStackedCards()}
+            
             <motion.div
               className="absolute top-0 left-0 right-0"
               animate={
@@ -165,9 +225,10 @@ function Projects() {
                   ? { 
                       x: direction === 'left' ? -500 : 500, 
                       opacity: 0,
-                      rotate: direction === 'left' ? -20 : 20
+                      rotate: direction === 'left' ? -20 : 20,
+                      scale: 0.8
                     }
-                  : { x: 0, opacity: 1, rotate: 0 }
+                  : { x: 0, opacity: 1, rotate: 0, scale: 1 }
               }
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               drag="x"
@@ -181,17 +242,38 @@ function Projects() {
                 }
               }}
             >
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="bg-white rounded-xl overflow-hidden shadow-xl">
                 <div className="relative">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                    <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
-                      {project.sdg}
-                    </span>
+                  <div className={`w-full h-64 ${project.imageOverlay.color} bg-opacity-20 flex items-center justify-center relative overflow-hidden`}>
+                    {/* Main background color/image */}
+                    <div className={`absolute inset-0 ${project.imageOverlay.color} bg-opacity-20`}></div>
+                    
+                    {/* Visual elements */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="grid grid-cols-6 grid-rows-6 h-full w-full">
+                        {Array.from({ length: 36 }).map((_, i) => (
+                          <div key={i} className="border border-gray-200 border-opacity-30"></div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Icon */}
+                    <span className="text-7xl relative z-10">{project.imageOverlay.icon}</span>
+                    
+                    {/* Floating shapes for visual interest */}
+                    <div className="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-white bg-opacity-10 animate-float-slow"></div>
+                    <div className="absolute bottom-1/3 right-1/3 w-12 h-12 rounded-full bg-white bg-opacity-10 animate-float-medium"></div>
+                    <div className="absolute top-1/2 right-1/4 w-8 h-8 rounded-full bg-white bg-opacity-10 animate-float-fast"></div>
+                    
+                    {/* SDG badge */}
+                    <div className="absolute top-4 right-4 bg-white bg-opacity-90 text-xs px-2 py-1 rounded-full shadow-md">
+                      <span className={`font-bold text-${project.imageOverlay.color.split('-')[1]}-600`}>{project.sdg}</span>
+                    </div>
+                    
+                    {/* Location overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                      <span className="text-white font-medium">{project.location}</span>
+                    </div>
                   </div>
                 </div>
                 
@@ -213,6 +295,18 @@ function Projects() {
                 </div>
               </div>
             </motion.div>
+            
+            {/* Swipe indicators */}
+            {animate && direction === 'right' && (
+              <div className="absolute top-6 right-6 bg-green-500 text-white p-2 rounded-full shadow-lg z-20 transform rotate-12">
+                <Check size={32} />
+              </div>
+            )}
+            {animate && direction === 'left' && (
+              <div className="absolute top-6 left-6 bg-red-500 text-white p-2 rounded-full shadow-lg z-20 transform -rotate-12">
+                <X size={32} />
+              </div>
+            )}
           </div>
           
           <div className="flex justify-center mt-8 gap-6">
@@ -257,11 +351,12 @@ function Projects() {
                     transition={{ duration: 0.5 }}
                     className="bg-white rounded-xl overflow-hidden shadow-lg text-gray-800"
                   >
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-40 object-cover"
-                    />
+                    <div className={`h-40 ${project.imageOverlay.color} bg-opacity-20 relative flex items-center justify-center`}>
+                      <span className="text-4xl">{project.imageOverlay.icon}</span>
+                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                        <span className="text-white text-sm font-medium">{project.location}</span>
+                      </div>
+                    </div>
                     <div className="p-4">
                       <h3 className="font-bold text-lg mb-2">{project.title}</h3>
                       <div className="flex items-center mb-2 text-gray-600 text-sm">
@@ -347,6 +442,33 @@ function Projects() {
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes float-medium {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes float-fast {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+        
+        .animate-float-slow {
+          animation: float-slow 5s ease-in-out infinite;
+        }
+        
+        .animate-float-medium {
+          animation: float-medium 3.5s ease-in-out infinite;
+        }
+        
+        .animate-float-fast {
+          animation: float-fast 2s ease-in-out infinite;
         }
       `}</style>
     </div>
