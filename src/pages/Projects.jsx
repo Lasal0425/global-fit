@@ -85,64 +85,11 @@ const projects = [
   },
 ];
 
-// Amenities data for the second slideshow
-const amenities = [
-  {
-    id: 1,
-    name: "Public Transport",
-    icon: "🚌",
-    color: "bg-blue-900"
-  },
-  {
-    id: 2,
-    name: "Wi-Fi",
-    icon: "📶",
-    color: "bg-blue-900"
-  },
-  {
-    id: 3,
-    name: "Common Kitchen",
-    icon: "🍳",
-    color: "bg-blue-900"
-  },
-  {
-    id: 4,
-    name: "24/7 Access",
-    icon: "🔑",
-    color: "bg-blue-900"
-  },
-  {
-    id: 5,
-    name: "Clean Bathrooms",
-    icon: "🚿",
-    color: "bg-blue-900"
-  },
-  {
-    id: 6,
-    name: "Study Area",
-    icon: "📚",
-    color: "bg-blue-900"
-  },
-  {
-    id: 7,
-    name: "Laundry",
-    icon: "🧺",
-    color: "bg-blue-900"
-  },
-  {
-    id: 8,
-    name: "Security",
-    icon: "🔒",
-    color: "bg-blue-900"
-  }
-];
-
 function Projects() {
   const [view, setView] = useState('swipe'); // 'swipe' or 'results'
   const [swipedProjects, setSwipedProjects] = useState([]);
   const [currentProject, setCurrentProject] = useState(0);
   const [matchedProjects, setMatchedProjects] = useState([]);
-  const [currentAmenity, setCurrentAmenity] = useState(2); // Start with Wi-Fi selected
   
   // Countdown timer
   const [timeLeft, setTimeLeft] = useState({
@@ -359,44 +306,9 @@ function Projects() {
     );
   };
 
-  const renderAmenitiesSlideshow = () => {
-    return (
-      <div className="py-16 px-4 bg-blue-950 text-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-10 text-center">Common Amenities</h2>
-          
-          <div className="relative">
-            <div className="flex justify-center gap-4 overflow-x-auto pb-6 no-scrollbar">
-              {amenities.map((amenity, index) => (
-                <div 
-                  key={amenity.id}
-                  className={`flex-shrink-0 p-6 rounded-lg min-w-48 ${
-                    index === currentAmenity ? "bg-blue-800" : "bg-blue-900"
-                  } flex flex-col items-center justify-center cursor-pointer transition-all`}
-                  onClick={() => setCurrentAmenity(index)}
-                >
-                  <div className="text-3xl mb-3">{amenity.icon}</div>
-                  <p className={index === currentAmenity ? "text-white" : "text-blue-300"}>
-                    {amenity.name}
-                  </p>
-                  {index === currentAmenity && (
-                    <div className="w-full h-1 bg-blue-400 mt-4 rounded-full"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {renderIndicators(amenities.length, currentAmenity)}
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="font-sans">
       {view === 'swipe' ? renderSwipeView() : renderResultsView()}
-      {renderAmenitiesSlideshow()}
     </div>
   );
 }
