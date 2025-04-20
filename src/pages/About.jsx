@@ -55,7 +55,7 @@ function About() {
               <div className="flex-1">
                 <h3 className="text-2xl font-bold mb-4">Live abroad, volunteer with purpose, grow as a leader</h3>
                 <p className="text-gray-700 mb-6">
-                  Global Volunteer is AIESEC's cross-cultural volunteering experience. Work on projects 
+                  Global Volunteer is AIESEC's cross-cultural volunteering experience. Working on projects 
                   addressing the UN Sustainable Development Goals while developing leadership skills 
                   and making a positive impact.
                 </p>
