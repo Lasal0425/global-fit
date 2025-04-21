@@ -66,7 +66,7 @@ function About() {
                   </div>
                   <div className="bg-white bg-opacity-70 p-3 rounded">
                     <div className="font-bold text-blue-600">17 SDGs</div>
-                    <div className="text-sm">UN Goals Addressed</div>
+                    <div className="text-sm">UN Goals Addressing</div>
                   </div>
                 </div>
               </div>
