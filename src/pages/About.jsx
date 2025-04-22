@@ -57,7 +57,7 @@ function About() {
                 <p className="text-gray-700 mb-6">
                   Global Volunteer is AIESEC's cross-cultural volunteering experience. Working on projects 
                   addressing the UN Sustainable Development Goals while developing leadership skills 
-                  and making a positive impact.
+                  and making a positive impact for yourself.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white bg-opacity-70 p-3 rounded">
